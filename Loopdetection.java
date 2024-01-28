@@ -15,7 +15,7 @@ public class Main {
 
         displayList();
 
-        tail.setNext(head); //creating loop, if this is commented no loop is detected
+        tail.next=head; //creating loop, if this is commented no loop is detected
 
         if(detectLoop()){
             System.out.println("The loop is detected in this Linked list");
@@ -27,11 +27,11 @@ public class Main {
     public static void displayList(){
         Node temp=head;
         System.out.println("The Linked List: ");
-        while(temp.getNext()!=null){
-            System.out.print(temp.getElement()+" -> ");
-            temp=temp.getNext();
+        while(temp.next!=null){
+            System.out.print(temp.element+" -> ");
+            temp=temp.next;
         }
-        System.out.print(tail.getElement()+"\n");
+        System.out.print(tail.element+"\n");
     }
     public static void addNode(int element){
         Node newNode=new Node(element);
@@ -40,16 +40,16 @@ public class Main {
             tail=head;
         }
         else{
-            tail.setNext(newNode);
+            tail.next=newNode;
             tail=newNode;
         }
     }
 
     public static boolean detectLoop(){
         Node slow=head,fast=head;
-        while(slow!=null && fast!=null && fast.getNext()!=null){
-            slow=slow.getNext();
-            fast= fast.getNext().getNext();
+        while(slow!=null && fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast= fast.next.next;
             if(slow==fast)
                     return true;
         }
@@ -58,23 +58,11 @@ public class Main {
     }
 }
 class Node {
-    protected  int element;
-    protected Node next;
+    public  int element;
+    public Node next;
 
     Node(int data){
         this.element=data;
         this.next=null;
-    }
-
-    public int getElement(){
-        return this.element;
-    }
-
-    public Node getNext(){
-        return this.next;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
     }
 }
