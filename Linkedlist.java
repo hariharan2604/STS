@@ -1,3 +1,4 @@
+// You are using Java
 import java.util.Scanner;
 public class Main {
     public static Node head=null;
@@ -17,11 +18,11 @@ public class Main {
     public static void displayList(){
         Node temp=head;
         System.out.println("The Linked List: ");
-        while(temp.getNext()!=null){
-            System.out.println(temp.getElement());
-            temp=temp.getNext();
+        while(temp.next!=null){
+            System.out.println(temp.element);
+            temp=temp.next;
         }
-        System.out.println(tail.getElement());
+        System.out.println(tail.element);
     }
     public static void addNode(int element){
         Node newNode=new Node(element);
@@ -30,7 +31,7 @@ public class Main {
             tail=head;
         }
         else{
-            tail.setNext(newNode);
+            tail.next=newNode;
             tail=newNode;
         }
 
@@ -38,23 +39,11 @@ public class Main {
 }
 
 class Node {
-    protected  int element;
-    protected Node next;
+    public  int element;
+    public Node next;
 
     Node(int data){
         this.element=data;
         this.next=null;
-    }
-
-    public int getElement(){
-        return this.element;
-    }
-
-    public Node getNext(){
-        return this.next;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
     }
 }
