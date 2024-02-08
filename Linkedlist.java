@@ -2,7 +2,7 @@
 import java.util.Scanner;
 public class Main {
     public static Node head=null;
-    public static Node tail=head;
+    public static Node temp=head;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Number of Elements: ");
@@ -28,11 +28,11 @@ public class Main {
         Node newNode=new Node(element);
         if(head==null){
             head=newNode;
-            tail=head;
+            temp=head;
         }
         else{
-            tail.next=newNode;
-            tail=newNode;
+            temp.next=newNode;
+            temp=newNode;
         }
 
     }
